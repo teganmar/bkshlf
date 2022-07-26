@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- adding below line removed this error: "GET /favicon.ico HTTP/1.1" 405 Method Not Allowed 
+    "If you're just trying to shut up chrome devtools on a local project, this is by far the easiest 
+    and cleanest way to go"-->
+<link rel="icon" href="data:,">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', path='./style.css') }}">
+<!-- font import -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<!-- <meta content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no" name="viewport"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<body>
+    <div id="bookshelf">
+    <h1>MY BOOKSHELF</h1>
+    <h3>
+        Herein lies your personal, digital bookshelf.
+        Your very own cozy corner of the internet to house and document all of your favorite paper worlds.
+    </h3>
+    </div>
+    
+    <div class="container">
+      <div class="shelf" id="shelf">
+        <img src="{{ url_for('static', path='./images/bookshelf.png')}}" class="image-base" alt="Responsive image"> <!--usemap="shelfmap"-->
+        
+        <div id="img-wrapper">
+            <a id="p1" onclick="addBook()">
+            <img src="{{ url_for('static', path='./images/plant1.png')}}" class="plant1" alt="responsive image" id="plant1">
+            </a>
+            <div class="img-overlay">
+                <p>add book</p>
+            </div>
+        </div>
+        <a id="p2" onclick="myFunction()">
+            <img src="{{ url_for('static', path='./images/plant2.png')}}" class="plant2" alt="responsive image" id="plant2">
+        </a>
+        <a id="p3" onclick="myFunction()">
+            <img src="{{ url_for('static', path='./images/plant3.png')}}" class="plant3" alt="responsive image" id="plant3">
+        </a>
+        <a id="p4" onclick="myFunction()">
+            <img src="{{ url_for('static', path='./images/plant4.png')}}" class="plant4" alt="responsive image" id="plant4">
+        </a>
+        <!-- mapping not working so had did hacky fix above-->
+        <!-- <map name="shelfmap" id="shelf">
+            <area id="succulent1" shape="circle" coords="445,120,60" alt="Succulent 1" onclick="myFunction()">
+            <area id="succulent2" shape="circle" coords="1050,320,60" alt="Succulent 2" onclick="myFunction()">
+            <area id="succulent3" shape="circle" coords="800,520,60" alt="Succulent 3" onclick="myFunction()"> 
+        </map> -->
+
+        <!-- <div>  -->
+        <div id="book-wrapper">
+            <a id="stack1" >
+            <!-- href="https://www.goodreads.com/book/show/52578297-the-midnight-library" target="_blank"> -->
+                <img src="{{ url_for('static', path='./images/stack3.png')}}" class="image1" alt="responsive image" id="bookstack1">
+            </a>
+            <div class="book-overlay" >
+            <!-- make divs around these paragraphs so that the text is aligned absolutely to the div -->
+            <!-- want to add a text resize function based on text length so it always fits in the div -->
+            <div class="book1">
+                <p id="stack1-text" onclick="getBook(event)">title 1</p>
+            </div>
+            <div class="book6">
+                <p id="stack6-text" onclick="getBook(event)">title 6</p>
+            </div>
+            </div>
+        </div>
+        <div id="book-wrapper">
+            <a id="stack2" >
+                <img src="{{ url_for('static', path='./images/books1.png')}}" class="image2" alt="responsive image" id="bookstack2">
+            </a>
+            <div class="book-overlay" >
+            <div class="book7">
+                <p id="stack7-text" onclick="getBook(event)">title 7</p>
+            </div>
+            <div class="book8">
+                <p id="stack8-text" onclick="getBook(event)">title 8</p>
+            </div>
+            <div class="book9">
+                <p id="stack9-text" onclick="getBook(event)">title 9</p>
+            </div>
+            <div class="book10">
+                <p id="stack10-text" onclick="getBook(event)">title 10</p>
+            </div>
+            <div class="book2">
+                <p id="stack2-text" onclick="getBook(event)">title 2</p>
+            </div>
+            <div class="book11">
+                <p id="stack11-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book12">
+                <p id="stack12-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book13">
+                <p id="stack13-text" onclick="getBook(event)"></p>
+            </div>    
+            </div>
+        </div>
+        <div id="book-wrapper">
+            <a id="stack3" >
+                <img src="{{ url_for('static', path='./images/books2.png')}}" class="image3" alt="responsive image" id="bookstack3">
+            </a> 
+            <div class="book-overlay" >
+            <div class="book14">
+                <p id="stack14-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book15">
+                <p id="stack15-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book3">
+                <p id="stack3-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book16">
+                <p id="stack16-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book17">
+                <p id="stack17-text" onclick="getBook(event)"></p>
+            </div>
+            </div>   
+        </div>
+        <div id="book-wrapper">
+            <a id="stack4" >
+                <img src="{{ url_for('static', path='./images/stack1.png')}}" class="image4" alt="responsive image" id="bookstack4">
+            </a>
+            <div class="book-overlay">
+            <div class="book18">
+                <p id="stack18-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book19">
+                <p id="stack19-text" onclick="getBook(event)"></p>
+            </div>
+            <div class="book4">
+                <p id="stack4-text" onclick="getBook(event)">title 4</p>
+            </div>
+            </div>   
+        </div>
+        <div id="book-wrapper">   
+            <a id="stack5" >
+                <img src="{{ url_for('static', path='./images/stack2.png')}}" class="image5" alt="responsive image" id="bookstack5">
+            </a>
+            <div class="book-overlay">
+            <div class="book5">
+                <p id="stack5-text" onclick="getBook(event)">title 5</p>
+            </div>    
+            <div class="book20">
+                <p id="stack20-text" onclick="getBook(event)">title 20</p>
+            </div>
+            </div> 
+        </div>
+        <!-- </div> -->
+
+      </div>
+    </div>
+    <!-- INPUT POP UP TO POST TO API -->
+    <!-- create hidden frame so it doesn't redirect after form submission -->
+    <iframe name="hiddenframe" id="hiddenframe" style="display: none;"></iframe>
+    <div class="form-popup" id="myForm" >
+        <form id="formData" class="form-container" enctype="multipart/form-data" target="hiddenframe">
+        <!-- action="/create-book" method="post" DON'T DEFINE THE METHOD IN THE FORM IT CREATES AN ERROR-->
+        <div class="header">
+            <span class="closeBtn" onclick="closeForm()">&times;</span>
+            <h1>Add a book</h1>
+        </div>
+      
+            <label for="author"><b>Author</b></label>
+            <input type="text" placeholder="Author name" name="author" id="author" autocomplete="off" required>
+
+            <label for="title"><b>Title</b></label>
+            <input type="text" placeholder="Book title" name="title" id="title" autocomplete="off" required>
+            
+            <label for="start_date"><b>Start Date</b></label>
+            <input type="date" placeholder="12/25/2022" name="start_date" id="start_date">
+            
+            <label for="end_date"><b>End Date</b></label>
+            <input type="date" placeholder="" name="end_date" id="end_date">
+          
+            <label for="rating"><b>Rating</b></label>
+            <input type="text" placeholder="5/5 such a great read" name="rating" id="rating" autocomplete="off">
+          
+
+            <label for="notes"><b>Notes</b></label>
+            <input type="text" placeholder="I love reading!" name="notes" id="notes" autocomplete="off">
+            <!-- <textarea  placeholder="I love reading!" name="notes" id="notes" autocomplete="off"></textarea> -->
+          
+            <br><br>
+            
+            <button id="btnSubmit" type="submit" class="btn" onclick="createBook()">Enter</button> <!-- onclick="createBook()"-->
+            
+        </form>
+    </div>
+
+    <!-- OUTPUT POP UP TO GET DATA FROM API & UPDATE THAT DATA IF DESIRED-->
+    <div class="form-popup" id="getForm" >
+        <form id="getformData" class="form-container" enctype="multipart/form-data" target="hiddenframe">
+            <!-- action="/get-book" method="get" method="post"-->
+        <div class="header">
+            <span class="closeBtn" onclick="closegetForm()">&times;</span>
+            <h1>View/Update Book</h1>
+        </div>
+            <input type="hidden" name="_method" value="put">
+            <label for="author"><b>Author</b></label>
+            <input type="text" name="getauthor" id="getauthor" autocomplete="off">
+
+            <label for="title"><b>Title</b></label>
+            <input type="text" name="gettitle" id="gettitle" autocomplete="off" >
+            
+            <label for="start_date"><b>Start Date</b></label>
+            <input type="date" name="getstart_date" id="getstart_date">
+            
+            <label for="end_date"><b>End Date</b></label>
+            <input type="date" name="getend_date" id="getend_date">
+            
+            <label for="rating"><b>Rating</b></label>
+            <input type="text" name="getrating" id="getrating" autocomplete="off">
+            
+            <label for="notes"><b>Notes</b></label>
+            <input type="text" name="getnotes" id="getnotes" autocomplete="off">
+            <br><br>
+            
+            <!-- <button id="btnSubmit" type="submit" class="btn" onclick="updateBook()">Update</button> -->
+            <div class="btnContainer">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button id="btnUpdate" class="btn" onclick="updateBook()">Update</button>
+                </div>
+                <div class="col-xs-6">
+                    <button id="btnDelete" class="btn" onclick="deleteBook()">Delete</button>
+                </div>
+            </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+
+<script> 
+    // on document ready load all titles in database onto bookshelf
+    $( document ).ready(loadShelf());
+    // in below function will want to load in all titles currently held in the database
+    // at the "/entries" endpoint to populate the bookshelf
+    function loadShelf(){ 
+        //console.log( "ready!" );
+        var endpoint = '/entries';
+        $.ajax({
+            type: 'GET',
+            url: endpoint,
+            //data: books,
+            cache: true, // if cache: False ajax adds _=[TIMESTAMP] to the url which we don't want
+            contentType: "application/json", //THIS IS NECESSARY. WON'T WORK WITHOUT IT!! //"application/x-www-form-urlencoded", //"application/json",
+            processData: false,
+            success: function (data) {
+                //const all = JSON.stringify(data); //returns json data converted to a string
+                const alltitles = data.map( function(d) {return d.title;} );
+                //uses func defined above to create a GLOBAL VARIABLE for booklist
+                //set_booklist(alltitles)
+                booklistlen = alltitles.length
+                for (var i = 0; i < alltitles.length; i++) {
+                    const t = `stack${i+1}-text`; //js fstring equivalent
+                    //console.log(t)
+                    if (alltitles[i].length > 20) {
+                        // takes all words > len 3 and then takes the last three consecutive words
+                        alltitles[i] = alltitles[i].replace(/(\b(\w{1,3})\b(\s|$))/g,'').split(' ').slice(-3).join(' ')
+                    };
+                    document.getElementById(t).innerHTML = alltitles[i]
+                }
+            },
+            error: function() {
+                alert("error getting book")
+            }
+        })
+    };
+
+    function myFunction() {
+       alert("You clicked on a cute succulent!");
+    }
+
+    function addBook() {
+        document.getElementById("myForm").style.display = "block";
+        loadShelf(); //load in all the titles effectively "refreshing" the database so that it always has current length title list before adding new book
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    function createBook() {
+        var formData = new FormData($('form#formData')[0]);
+        title = $('input[name=title]').val()
+        // for (var pair of formData.entries()) {
+        //      console.log(pair[0]+ ', ' + pair[1]); 
+        // }
+        var endpoint = '/create-book';
+        const n = booklistlen + 1;
+        console.log("book will be added to title" + n)
+
+        $.ajax({
+                type: 'POST',
+                url: endpoint,
+                data: formData,
+                cache: false,
+                contentType: false, //THIS IS NECESSARY. WON'T WORK WITHOUT IT!! //"application/x-www-form-urlencoded", //"application/json",
+                processData: false,
+                success: function (data) {
+                    console.log("book added successfully!");
+                    const t = `stack${n}-text`;
+                    // adds title to book
+                    document.getElementById(t).innerHTML = title.replace(/(\b(\w{1,3})\b(\s|$))/g,'').split(' ').slice(-3).join(' ')
+                    // closes form
+                    document.getElementById("formData").reset();//clears the form
+                    closeForm() //closes the form
+                },
+                error: function() {
+                    alert("error adding book")
+                }
+    });
+}
+
+    function getBook(e) {
+        document.getElementById("getForm").style.display = "block";
+
+        const title = e.target.innerText;//
+        var endpoint = '/get-book/' + title;
+        // console.log(title)
+        $.ajax({
+                type: 'GET',
+                url: endpoint,
+                data: title,
+                cache: true,//false, // if cache: False ajax adds _=[TIMESTAMP] to the url which we don't want
+                contentType: "application/json", //THIS IS NECESSARY. WON'T WORK WITHOUT IT!! //"application/x-www-form-urlencoded", //"application/json",
+                processData: false,
+                success: function (data) {
+                    //alert("success!");
+                    document.getElementById("getauthor").value = data.author
+                    document.getElementById("gettitle").value = data.title
+                    document.getElementById("getstart_date").value = data.start_date
+                    document.getElementById("getend_date").value = data.end_date
+                    document.getElementById("getrating").value = data.rating
+                    document.getElementById("getnotes").value = data.notes
+                    //document.getElementById("formData").reset();//clears the form
+                },
+                error: function() {
+                    alert("error getting book")
+                }
+    });
+    } 
+
+    function closegetForm() {
+        document.getElementById("getForm").style.display = "none";
+        document.getElementById("getformData").reset();//clears the form
+    }
+
+    function updateBook() {
+        var formData = new FormData($('form#getformData')[0]);
+        var endpoint = '/update-book';
+
+        $.ajax({
+                type: 'PUT',
+                url: endpoint,
+                data: formData,
+                cache: false,
+                contentType: false, //THIS IS NECESSARY. WON'T WORK WITHOUT IT!! //"application/x-www-form-urlencoded", //"application/json",
+                processData: false,
+                success: function (data) {
+                    console.log("Book successfully updated!");
+                    closegetForm() //closes the form
+                    document.getElementById("getformData").reset();//clears the form
+                },
+                error: function() {
+                    alert("error updating book")
+                }
+        });
+}
+// var result = confirm("Want to delete?");
+// if (result) {
+//     //Logic to delete the item
+// }
+    function deleteBook() {
+        var result = confirm("Sure you want to delete?");
+        console.log(document.getElementById("gettitle").value)
+        const title = document.getElementById("gettitle").value;
+        var endpoint = '/delete-book/' + title;
+        const n = booklistlen + 1;
+
+        if (result) {
+        $.ajax({
+                type: 'DELETE',
+                url: endpoint,
+                data: title,
+                cache: false,
+                contentType: false, //THIS IS NECESSARY. WON'T WORK WITHOUT IT!! //"application/x-www-form-urlencoded", //"application/json",
+                processData: false,
+                success: function (data) {
+                    console.log("Book successfully deleted!");
+                    const t = `stack${n}-text`;
+                    // removes title from book
+                    // document.getElementById(t).innerHTML = `title ${n}`;
+                    document.getElementById(t).innerHTML = '';
+                    closegetForm() //closes the form
+                    document.getElementById("getformData").reset();//clears the form
+                },
+                error: function() {
+                    alert("error updating book")
+                }
+        });
+    }
+}
+
+</script>

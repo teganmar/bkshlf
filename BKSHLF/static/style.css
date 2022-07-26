@@ -1,0 +1,549 @@
+h1 {
+    font-family: 'Courier New', monospace;
+}
+
+#bookshelf {
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.container{
+    position: relative;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+}
+
+.closeBtn{
+    float: right;
+    padding-right: 20px;
+    font-size: 50px;
+    margin-top: -40px;
+    color: black;
+    transition: 300ms;
+}
+
+.closeBtn:hover, .closeBtn:focus{
+    /* color: rgba(238, 213, 202); */
+    /* opacity: 0.5; */
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+#btnSubmit, #btnUpdate{
+    font-size: x-large;
+    font-family: 'Arima Madurai', cursive;
+}
+
+#btnDelete{
+    font-size: x-large;
+    font-family: 'Arima Madurai', cursive;
+    background-color: rgb(189, 114, 114);
+}
+/* form pop up to create-book */
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: absolute;
+    /* top: 100px;left: 0;bottom: 0;right: 0; */
+    top: 55%;
+    left: 52%;
+    transform: translate(-50%,-50%);
+    margin: auto;
+    max-width: 600px;
+    min-width: 500px;
+    height: 780px;
+    z-index: 50;
+    animation-name: openpopup;
+    animation-duration: 500ms;
+  }
+
+@keyframes openpopup{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+/* Add styles to the form container */
+.form-container {
+    width: 100%;
+    height: 100%;
+    /* max-width: 700px; */
+    padding: 20px 10px;
+    border: 5px solid #000000fa;
+    background-color: #ebcaa4fa;
+    background: rgba(238, 213, 202, 0.95);
+  }
+
+/* set input box style & size */
+input {
+    width: 100%;
+    padding: 15px 10px;
+    margin: 8px 0;
+    /* outline-color: burlywood; */
+    /* box-sizing: border-box; */
+}
+
+/* Set a style for the enter button */
+.form-container .btn {
+    background-color: #76968a;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+
+/* Add different background color to the cancel button */
+.form-container .cancel {
+    background-color: rgb(146, 169, 179);
+  }
+
+  /* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+
+/* ----------------------------- */
+
+/* #stack1, #stack2, #stack3, #stack4, #stack5 {
+    cursor: pointer;
+} */
+
+.shelf{
+    position: relative;
+}
+
+/* .on-shelf img{
+    position: relative;
+} */
+
+/*this allowed for the books to stay on the shelf when resizing window*/
+/* map {
+    display: grid;
+    justify-content: center;
+  } */
+
+/* #succulent1:hover, #succulent2:hover, #succulent3:hover{
+    cursor: pointer;
+    position: relative;
+} */
+
+/* .shelf a{
+    cursor: pointer;
+} */
+
+#plant1{
+    position: absolute;
+    top: 37.5px;
+    left: 397px;
+    width: 6.6%;
+    height: 16%;
+    z-index: 12;
+    cursor: pointer;
+}
+
+.img-wrapper {
+    position: relative;
+  }
+  
+.img-overlay {
+position: absolute;
+top: 170px;
+bottom: 0;
+left: 410px;
+right: 0;
+font-family: "verdana";
+font-size: small;
+font-weight: bold;
+color: burlywood;
+pointer-events: none;
+z-index: 13;
+}
+
+/*-------- BOOK STACK TEXT OVERLAY ---------*/
+.book-wrapper {
+    position: relative;
+}
+
+.book-overlay {
+position: absolute;
+width: fit-content;
+top: 170px;
+bottom: 0;
+left: 410px;
+right: 0;
+/* font-family: "verdana";
+font-size: small;
+font-weight: bold;
+color: burlywood; */
+/* pointer-events: none; */
+}
+
+p {
+    /* border used to visualize clickable areas */
+    /* border: 1px solid black; */
+    display: inline-block;
+    font-family: "verdana";
+    font-size: small;
+    font-weight: bold;
+    color: burlywood;
+    cursor: pointer;
+}
+
+p:hover, p:focus{
+    opacity: 0.5; 
+}
+
+/* START OF SHELF 1 */
+.book1 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 0rem;
+    left: 13rem;
+    max-width: 200px;
+    text-align: center;
+    z-index: 15;
+}
+
+.book6 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: -8rem;
+    left:13rem;
+    max-width: 200px;
+    text-align: center;
+}
+#stack6-text {
+    color: rgb(245, 234, 234);
+    width: 200px;
+}
+/* END OF SHELF 1 */
+
+/* START OF SHELF 2 */
+.book2 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 10.7rem;
+    left: 43rem;
+    max-width: 130px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+
+.book7 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 21.7rem;
+    left: 25rem;
+    max-width: 155px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+
+.book8 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 19.5rem;
+    left: 29rem;
+    max-width: 150px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+#stack8-text {color: grey;}
+
+.book9 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 16.3rem;
+    left: 33.5rem;
+    max-width: 150px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+#stack9-text {color: rgb(58, 54, 54);}
+
+.book10 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 12.7rem;
+    left: 38rem;
+    max-width: 160px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+#stack10-text {color: rgb(245, 234, 234);}
+
+.book11 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 7.5rem;
+    left: 47rem;
+    max-width: 150px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+
+.book12 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 5rem;
+    left: 51rem;
+    max-width: 150px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+#stack12-text {color: rgb(58, 54, 54);}
+
+.book13 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 2.3rem;
+    left: 54.5rem;
+    max-width: 145px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+
+/* END OF SHELF 2 */
+
+/* START OF SHELF 3 LEFT OF PLANT*/
+.book3 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 38rem;
+    left: 17.5rem;
+    max-width: 145px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-92deg);
+    z-index: 15;
+}
+
+.book14 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 42rem;
+    left: 10rem;
+    max-width: 140px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+    z-index: 15;
+}
+
+.book15 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 40rem;
+    left: 13.5rem;
+    max-width: 165px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+    z-index: 15;
+}
+#stack15-text {
+color: rgb(58, 54, 54);
+width: 165px;
+}
+
+.book16 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 35rem;
+    left: 21.5rem;
+    max-width: 140px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+    z-index: 15;
+}
+#stack16-text {
+color: rgb(245, 234, 234);
+}
+
+.book17 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 33rem;
+    left: 26.3rem;
+    max-width: 150px;
+    text-align: center;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+}
+
+/* END OF SHELF 3 LEFT OF PLANT*/
+
+/* START OF SHELF 4*/
+.book4 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 54.5rem;
+    left: 23rem;
+    max-width: 250px;
+    text-align: center;
+}
+#stack4-text {
+width: 250px;
+} 
+
+.book18 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 50rem;
+    left: 23.3rem;
+    max-width: 240px;
+    text-align: center;
+}
+#stack18-text {
+color: rgb(245, 234, 234);
+}
+
+.book19 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 51.5rem;
+    left: 23.5rem;
+    max-width: 240px;
+    text-align: center;
+}
+#stack19-text {color: rgb(58, 54, 54);}
+/* END OF SHELF 4*/
+
+/* START OF SHELF 3 RIGHT OF PLANT*/
+.book5 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 35.5rem;
+    left: 49.5rem;
+    max-width: 180px;
+    text-align: center;
+}
+/* #stack5-text {
+position: relative;
+top: 35.5rem;
+left: 53rem;
+width: max-content;
+z-index: 10;
+} */
+
+.book20 {
+    /* outline: 2px solid red; */
+    position: relative;
+    top: 37rem;
+    left: 50rem;
+    max-width: 180px;
+    text-align: center;
+}
+#stack20-text {
+    color: rgb(58, 54, 54);
+    width: 180px;
+}
+/* END OF SHELF 3 RIGHT OF PLANT*/
+
+/* #stack1-text:hover, #stack1-text:focus, 
+#stack2-text:hover, #stack2-text:focus,
+#stack3-text:hover, #stack3-text:focus,
+#stack4-text:hover, #stack4-text:focus,
+#stack5-text:hover, #stack5-text:focus{
+    opacity: 0.5;
+} */
+/*--------------------------------------*/
+
+#bookstack1{
+    position: absolute;
+    top: 110.5px;
+    left: 530px;
+    width: 16%;
+    height: 9%;
+}
+
+#bookstack2{
+    position: absolute;
+    top: 220px;
+    left: 645px;
+    width: 23%;
+    height: 17.5%;
+    /* width: 30px;
+    height: 30px; */
+}
+
+#plant2{
+    position: absolute;
+    top: 252.5px;
+    left: 1015px;
+    width: 6%;
+    height: 14.3%;
+}
+
+#bookstack3{
+    position: absolute;
+    top: 421px;
+    left: 505px;
+    width: 14%;
+    height: 17%;
+    /* width: 30px;
+    height: 30px; */
+}
+
+#plant3{
+    position: absolute;
+    top: 426.5px;
+    left: 790px;
+    width: 7.1%;
+    height: 16.6%;
+}
+
+#bookstack4{
+    position: absolute;
+    top: 660px;
+    left: 620px;
+    width: 20%;
+    height: 12%;
+    /* width: 30px;
+    height: 30px; */
+}
+
+#plant4{
+    position: absolute;
+    top: 614.6px;
+    left: 468px;
+    width: 8.5%;
+    height: 15.9%;
+    z-index: 5;
+}
+#bookstack5{
+    position: absolute;
+    top: 512px;
+    left: 895px;
+    width: 14%;
+    height: 8%;
+    /* width: 30px;
+    height: 30px; */
+}
+
+/* #succulent1:hover{
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🌱</text></svg>")
+    16 0, auto; 
+  }
+
+#succulent2:hover {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🪴</text></svg>")
+    16 0, auto;
+} */
